@@ -18,7 +18,7 @@ your production-ready server of choice.
 ## Screenshots
 
 The index lists available UPS devices on each server, along with their description,
-status, and battery charge:
+status, battery charge, and UPS load:
 
 ![Index](screenshots/ups_index.png "Index")
 

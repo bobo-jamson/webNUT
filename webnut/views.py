@@ -39,6 +39,7 @@ class NUTViews(object):
         for (_, ups_vars) in ups_list.items():
             ups_vars['status'] = self._ups_status(ups_vars['status'])
             ups_vars['battery'] = self._ups_battery(ups_vars['battery'])
+            ups_vars['load'] = self._ups_load(ups_vars['load'])
         return dict(title='UPS Devices', ups_list=ups_list)
 
     @view_config(route_name='ups_view', renderer='templates/ups_view.pt')
@@ -49,13 +50,15 @@ class NUTViews(object):
             ups_vars = self.webnut.get_ups_vars(ups)
             ups_status = ups_vars.get('ups.status', ('Unknown', ''))[0]
             ups_battery = int(ups_vars.get('battery.charge', (0, ''))[0])
+            ups_load = int(ups_vars.get('ups.load', (0, ''))[0])
             # Update vars with custom HTML rendering.
             for (k, v) in ups_vars.items():
                 ups_vars[k] = (v[0], v[1], self._ups_var_writable(v[2]))
             return dict(title=ups_name,
                         ups_vars=ups_vars,
                         ups_status=self._ups_status(ups_status),
-                        ups_battery=self._ups_battery(ups_battery))
+                        ups_battery=self._ups_battery(ups_battery),
+                        ups_load=self._ups_load(ups_load))
         except KeyError:
             raise NotFound
 
@@ -123,6 +126,35 @@ class NUTViews(object):
             return Status(charge, 'bg-warning')
         else:
             return Status(charge, 'bg-danger')
+
+    def _ups_load(self, load: int):
+
+        class Status(object):
+            # Allows Chameleon to print unescaped HTML.
+            def __init__(self, load, color):
+                self.load = load
+                self.color = color
+
+            def __html__(self):
+                height = 20
+                return '''
+                <div class="progress position-relative" style="height:{0}px;background-color:silver;line-height:{0}px;">
+                    <div class="progress-bar {1}"
+                        style="width:{2}%;color:black"
+                        role="progressbar";
+                        aria-valuenow="{2}"
+                        aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                    <span title="{2}%" class="justify-content-center align-middle d-flex position-absolute w-100">{2}%</span>
+                </div>
+                '''.format(height, self.color, self.load)
+
+        if load > 90:
+            return Status(load, 'bg-danger')
+        elif load > 60:
+            return Status(load, 'bg-warning')
+        else:
+            return Status(load, 'bg-success')
 
 
 def notfound(request):
