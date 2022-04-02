@@ -29,3 +29,12 @@ device:
 ![UPS View](screenshots/ups_view.png "UPS View")
 
 Clicking on the power icon will return to the index page.
+
+## Credit
+
+[Ryan Shipp][3] - Original webNUT
+
+[Ade Miller][4] - webNUT fork with added UPS runtime, support for multiple servers, UI improvements, favicon support, information on whether the UPS variable is "writable", descriptions for variables without description
+
+[3]: https://github.com/rshipp "Ryan Shipp"
+[4]: https://github.com/AdeMiller "Ade Miller"
