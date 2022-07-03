@@ -9,6 +9,7 @@
                         <th>Status</th>
                         <th>Battery</th>
                         <th>Runtime</th>
+			<th>Load</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -19,7 +20,8 @@
                         <td>${ups_list[ups]['server']}</td>
                         <td>${ups_list[ups]['description']}</td>
                         <td>${ups_list[ups]['status']}</td>
-                        <td>${ups_list[ups]['battery']}</td>
+			<td><progress id="${ups}_bat" value="${ups_list[ups]['battery']}" max="100"> ${ups_list[ups]['battery']}% </progress>&nbsp;${ups_list[ups]['battery']}%</td>
+			<td><progress id="${ups}_load" value="${ups_list[ups]['load']}" max="100"> ${ups_list[ups]['load']}% </progress>&nbsp;${ups_list[ups]['load']}%</td>
                         <td>${ups_list[ups]['runtime']}</td>
                     </tr>
                 </tbody>
