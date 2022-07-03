@@ -53,7 +53,7 @@ class WebNUT(object):
                             'description': client.description(ups),
                             'status': ups_vars.get('ups.status', 'Unknown'),
                             'battery': int(ups_vars.get('battery.charge', 0)),
-                        'load': ups_vars['ups.load'],
+                            'load': ups_vars['ups.load'],
                             'runtime': runtime,
                         }
             return ups_list
