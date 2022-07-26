@@ -1,42 +1,37 @@
 <div metal:use-macro="view.layout">
     <div metal:fill-slot="content">
-            <table class="table table-striped table-hover" id="ups_table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Server</th>
-                        <th>Description</th>
-                        <th>Status</th>
-                        <th>Battery</th>
-                        <th>Runtime</th>
-			<th>Load</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr tal:repeat="ups ups_list">
-                        <td>
-                            <a title="${ups_list[ups]['name']} detail" href="${request.route_url('ups_view', ups=ups)}">${ups_list[ups]['name']}</a>
-                        </td>
-                        <td>${ups_list[ups]['server']}</td>
-                        <td>${ups_list[ups]['description']}</td>
-                        <td>${ups_list[ups]['status']}</td>
-			<td><progress id="${ups}_bat" value="${ups_list[ups]['battery']}" max="100"> ${ups_list[ups]['battery']}% </progress>&nbsp;${ups_list[ups]['battery']}%</td>
-			<td><progress id="${ups}_load" value="${ups_list[ups]['load']}" max="100"> ${ups_list[ups]['load']}% </progress>&nbsp;${ups_list[ups]['load']}%</td>
-                        <td>${ups_list[ups]['runtime']}</td>
-                    </tr>
-                </tbody>
-            </table>
+        <table class="table table-striped table-hover" id="ups_table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Server</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Battery</th>
+                    <th>Load</th>
+                    <th>Runtime</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr tal:repeat="ups ups_list">
+                    <td>
+                        <a title="${ups_list[ups]['name']} detail"
+                            href="${request.route_url('ups_view', ups=ups)}">${ups_list[ups]['name']}</a>
+                    </td>
+                    <td>${ups_list[ups]['server']}</td>
+                    <td>${ups_list[ups]['description']}</td>
+                    <td>${ups_list[ups]['status']}</td>
+                    <td>${ups_list[ups]['battery']}</td>
+                    <td>${ups_list[ups]['load']}</td>
+                    <td>${ups_list[ups]['runtime']}</td>
+                </tr>
+            </tbody>
+        </table>
 
-            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css"/>
-            <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css"/>
-            <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-            <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script>
-            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
-            <script type="text/javascript">
-                $(function(){
-                    $("#ups_table").dataTable();
-                });
-            </script>
+        <script type="text/javascript">
+            $(function () {
+                $("#ups_table").dataTable();
+            });
+        </script>
     </div>
 </div>

@@ -12,19 +12,19 @@ requires = [
     'pyramid_debugtoolbar',
     'waitress',
     'nut2',
-    ]
+]
 
 setup(name='webNUT',
       version='0.0.1',
       description='webNUT',
       long_description=README,
       classifiers=[
-        "Programming Language :: Python",
-        "Framework :: Pyramid",
-        "Topic :: Internet :: WWW/HTTP",
-        "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
-        "Topic :: System :: Power (UPS)",
-        ],
+          "Programming Language :: Python",
+          "Framework :: Pyramid",
+          "Topic :: Internet :: WWW/HTTP",
+          "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
+          "Topic :: System :: Power (UPS)",
+      ],
       author='rshipp',
       author_email='python@rshipp.com',
       url='https://github.com/rshipp/webNUT',
