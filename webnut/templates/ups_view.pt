@@ -3,10 +3,16 @@
             <div class="col-sm-8 col-xs-8 pl-0 mb-2">
                 <div class="row">
                     <div class="col-4"><strong>Status</strong>:</div>
+                    <div class="progress progress-striped active">
+                        <div class="progress-bar"  role="progressbar" aria-valuenow="${ups_vars['battery.charge'][0]}" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+                            <span class="sr-only">${ups_vars['battery.charge'][0]}% Charged</span>
+                        </div>
+                    </div>
                     <div class="col-2">${ups_status}</div>
                 </div>
                 <div class="row">
                     <div class="col-4"><strong>Battery charge</strong>:</div>
+                    
                     <div class="col-2">${ups_battery}</div>
                 </div>
             </div>
