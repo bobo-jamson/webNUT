@@ -6,6 +6,6 @@ RUN  pip install setuptools
 WORKDIR /application
 COPY . /application
 RUN pip install -e . 
-RUN pip3 install -e .
+RUN pip install -e .
 EXPOSE 6543
 CMD pserve production.ini --reload
