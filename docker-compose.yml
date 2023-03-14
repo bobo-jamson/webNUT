@@ -1,0 +1,16 @@
+# taken and modified from https://github.com/ozgunawesome/webNUT/blob/main/docker-compose.yml
+# and https://hub.docker.com/r/edgd1er/webnut
+version: '3'
+services:
+  webnut:
+    container_name: 'webnut'
+    ports:
+      - "6543:6543"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/application
+      - ./config.py:/application/webnut/config.py:ro
+    command: pserve production.ini --reload
+    restart: unless-stopped
